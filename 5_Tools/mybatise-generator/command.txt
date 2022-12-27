@@ -1,0 +1,4 @@
+cd /Users/kg/develop/NewProject/Gitee/MicroComponent/Components/mcp-java-toolkit/mybatise-generator
+chmod a+x gen.sh
+bash gen.sh
+

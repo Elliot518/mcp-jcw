@@ -1,0 +1,5 @@
+{
+  "author": "Kelvin Gu",
+  "basePackage": "com.jnj.pangea",
+  "autoCurationXmlFile": "auto_test.xml"
+}

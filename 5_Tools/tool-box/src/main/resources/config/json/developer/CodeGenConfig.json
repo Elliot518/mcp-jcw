@@ -1,0 +1,9 @@
+{
+  "codeOutputPath": "/Users/kg/develop/CodeGenerate/",
+  "codePackageName": "com.mcp.geek",
+  "codeModuleName": "api",
+  "dbUrl": "jdbc:mysql://localhost:3306/value_db?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true",
+  "dbUser": "root",
+  "dbPass": "mysql",
+  "author": "KG"
+}

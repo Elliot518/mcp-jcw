@@ -1,0 +1,5 @@
+{
+  "subPackage": "sap.edm.bom_itm_node",
+  "xmlPathPrefix": "/sap/edm/bom_itm_node",
+  "executionClass": "EDMPlantEndo"
+}

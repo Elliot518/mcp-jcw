@@ -1,0 +1,17 @@
+{
+  "excelTemplateName": "sample_template.xlsx",
+  "entityMap": {
+    "sheetIndex": 1,
+    "sourceEntity": {
+      "systemColumn": 8,
+      "objectColumn": 10,
+      "attributeColumn": 11
+    },
+    "targetEntity": {
+      "systemColumn": 1,
+      "objectColumn": 3,
+      "attributeColumn": 4
+    }
+  },
+  "inputSheetIndex": 3
+}

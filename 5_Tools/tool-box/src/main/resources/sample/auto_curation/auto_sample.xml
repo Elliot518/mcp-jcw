@@ -1,0 +1,62 @@
+<adf-curation xmlPathPrefix="/sap/edm/bom_itm_node" executionClassName="com.jnj.omega.sap.edm.bom_itm_node.EDMBomItmNodeBtbjapan">
+
+    <regions>
+        <region path="/btbjapan/stas" mainRegion="true">
+            <columns>stlty,stlnr,stlal,stlkn,stasz,datuv,aennr,lkenz,andat,aedat</columns>
+            <relations>
+                <region path="/edm/source_system_v1">
+                    <columns>sourceSystem,localSourceSystem</columns>
+                    <expression></expression>
+                </region>
+            </relations>
+        </region>
+    </regions>
+
+    <methods>
+        <method name="getSrcSysCd" resultType="Map" isPK="false" path="/edm/source_system_v1">
+            <parameters>
+                <parameter name="localSourceSystem" value="localSourceSystem"/>
+            </parameters>
+        </method>
+    </methods>
+
+
+    <viewRegion name="/edm/bom_itm_node">
+        <vars>
+            <var name="stlty" value="stlty"/>
+            <var name="stlnr" value="stlnr"/>
+            <var name="stlal" value="stlal"/>
+            <var name="stlkn" value="stlkn"/>
+            <var name="stasz" value="stasz"/>
+            <var name="datuv" value="datuv"/>
+            <var name="aennr" value="aennr"/>
+            <var name="lkenz" value="lkenz"/>
+            <var name="andat" value="andat"/>
+            <var name="aedat" value="aedat"/>
+        </vars>
+        <columns>
+            <column name="srcSysCd" isPK="true">
+                <ref method="getSrcSysCd" resultType="Map" parameter="'btbjapan'" value="sourceSystem">
+                    <if test="StringUtils.isNotEmpty(sourceSystem)">
+                        <set name="srcSysCd" value="sourceSystem"/>
+                    </if>
+                    <else>
+                        <set name="srcSysCd" value="''"/>
+                    </else>
+                </ref>
+            </column>
+            <column name="bomCatCd" var="stlty"  isPK="true"/>
+            <column name="bomNum" var="stlnr"  isPK="true"/>
+            <column name="altBomNum" var="stlal"  isPK="true"/>
+            <column name="bomItmNodeNum" var="stlkn" isPK="true"/>
+            <column name="bomItmNodeCntrNbr" var="stasz" isPK="true"/>
+            <column name="bomItmVldFromDt" var="datuv"/>
+            <column name="chgNum" var="aennr"/>
+            <column name="delInd" var="lkenz"/>
+            <column name="crtDttm" var="andat"/>
+            <column name="chgDttm" var="aedat"/>
+
+        </columns>
+    </viewRegion>
+
+</adf-curation>

@@ -1,0 +1,23 @@
+<adf-curation xmlPathPrefix="$XmlPathPrefix$" executionClassName="$ExecutionClassName$">
+    <regions>
+        <region path="$MainRegionPath$" mainRegion="true">
+            <columns>$ColumnString$</columns>
+            <relations>
+                $OtherRegionsBlock$
+            </relations>
+        </region>
+    </regions>
+
+    <methods>
+        $MethodList$
+    </methods>
+
+    <viewRegion name="$ViewRegionPath$">
+        <vars>
+            $VarList$
+        </vars>
+        <columns>
+            $ColumnList$
+        </columns>
+    </viewRegion>
+</adf-curation>

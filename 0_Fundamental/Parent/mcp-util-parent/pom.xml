@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mcp</groupId>
+    <artifactId>mcp-util-parent</artifactId>
+    <version>1.0.RELEASE</version>
+    <packaging>pom</packaging>
+
+    <!-- Dependencies Versions Control Centralization -->
+    <properties>
+        <!-- Global Settings -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>8</java.version>
+        <maven.compiler.version>3.8.1</maven.compiler.version>
+        <maven.surefire.version>3.0.0-M5</maven.surefire.version>
+        <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
+        <maven-source-plugin.version>2.1.2</maven-source-plugin.version>
+
+        <!-- nexus repository -->
+        <nexus.repository.id>kg_hosted</nexus.repository.id>
+        <nexus.repository.release.name>MCP Nexus Release Repository</nexus.repository.release.name>
+        <nexus.repository.snapshot.name>MCP Nexus Snapshot Repository</nexus.repository.snapshot.name>
+        <nexus.repository.url>http://139.224.224.170:8081/repository/kg_hosted/</nexus.repository.url>
+
+        <!-- unit test dependency versions -->
+        <junit.version>4.12</junit.version>
+        <mockito.version>3.11.2</mockito.version>
+        <powermock.version>2.0.9</powermock.version>
+
+        <!-- cache dependency versions -->
+        <caffeine.version>2.8.4</caffeine.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- caffeine cache -->
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine.version}</version>
+            </dependency>
+
+            <!-- junit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <distributionManagement>
+        <!--正式版本-->
+        <repository>
+            <!-- nexus服务器中用户名：在settings.xml中<server>的id-->
+            <id>${nexus.repository.id}</id>
+            <!-- 这个名称自己定义 -->
+            <name>${nexus.repository.release.name}</name>
+            <url>${nexus.repository.url}</url>
+        </repository>
+        <!--快照
+        <snapshotRepository>
+            <id>${nexus.repository.id}</id>
+            <name>${nexus.repository.snapshot.name}</name>
+            <url>${nexus.repository.url}</url>
+        </snapshotRepository>-->
+    </distributionManagement>
+</project>
+
+

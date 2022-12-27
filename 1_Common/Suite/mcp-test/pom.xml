@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.mcp</groupId>
+        <artifactId>mcp-parent</artifactId>
+        <version>1.0.RELEASE</version>
+    </parent>
+
+    <artifactId>mcp-test</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.RELEASE</version>
+
+    <modules>
+        <module>mcp-test-domain</module>
+        <module>mcp-test-core</module>
+    </modules>
+
+    <distributionManagement>
+        <!--正式版本-->
+        <repository>
+            <!-- nexus服务器中用户名：在settings.xml中<server>的id-->
+            <id>${nexus.repository.id}</id>
+            <!-- 这个名称自己定义 -->
+            <name>${nexus.repository.release.name}</name>
+            <url>${nexus.repository.url}</url>
+        </repository>
+        <!--快照
+        <snapshotRepository>
+            <id>${nexus.repository.id}</id>
+            <name>${nexus.repository.snapshot.name}</name>
+            <url>${nexus.repository.url}</url>
+        </snapshotRepository>-->
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.version}</version>
+                <configuration>
+                    <forkMode>once</forkMode>
+                    <threadCount>10</threadCount>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
+
+
+
+

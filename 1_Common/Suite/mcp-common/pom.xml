@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.mcp</groupId>
+        <artifactId>mcp-parent</artifactId>
+        <version>1.0.RELEASE</version>
+    </parent>
+
+    <artifactId>mcp-common</artifactId>
+    <version>1.0.RELEASE</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>mcp-common-domain</module>
+        <module>mcp-common-util</module>
+        <module>mcp-common-core</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- spring boot validation -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!-- Jackson Json -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <!-- knife4j -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- springfox swagger3.0 plus starter -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <!--正式版本-->
+        <repository>
+            <!-- nexus服务器中用户名：在settings.xml中<server>的id-->
+            <id>${nexus.repository.id}</id>
+            <!-- 这个名称自己定义 -->
+            <name>${nexus.repository.release.name}</name>
+            <url>${nexus.repository.url}</url>
+        </repository>
+        <!--快照
+        <snapshotRepository>
+            <id>${nexus.repository.id}</id>
+            <name>${nexus.repository.snapshot.name}</name>
+            <url>${nexus.repository.url}</url>
+        </snapshotRepository>-->
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.version}</version>
+                <configuration>
+                    <forkMode>once</forkMode>
+                    <threadCount>10</threadCount>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
